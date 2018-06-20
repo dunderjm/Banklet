@@ -1,13 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author krt
- */
-public class PessoaJuridica {
+public class PessoaJuridica extends Pessoa{
+    String cnpj;
+    Conta conta;
+    
+    public PessoaJuridica(){
+        
+    }
+    
+    public PessoaJuridica(String nome, String cnpj){
+        super(nome);
+        this.cnpj = cnpj;
+    }
     
 }

@@ -1,13 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author krt
- */
-public class Pessoa {
+import java.util.List;
+public abstract class Pessoa {
+    String nome;
+    List<Conta> contas;
     
+    public Pessoa(){
+        
+    }
+    
+    public Pessoa(String nome){
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
+    public List<Conta> getContas(){
+        return contas;
+    }
+    
+    public void addConta(Conta conta){
+        this.contas.add(conta);
+    }
 }
