@@ -1,7 +1,8 @@
-public class Conta {
+package banco.model;
+
+public abstract class Conta {
     private Pessoa titular;
-    private int identificacao;
-    private int agencia;
+    private int codigo;
      private double saldo;
     
     public Conta(){
@@ -10,8 +11,7 @@ public class Conta {
     
     public Conta(Pessoa titular, int identificacao, int agencia){
         this.titular = titular;
-        this.identificacao = identificacao;
-        this.agencia = agencia;
+        this.codigo = identificacao;
     }
     
     public Pessoa getTitular() {
@@ -23,20 +23,12 @@ public class Conta {
         this.titular.addConta(this);
     }
 
-    public int getIdentificacao() {
-        return identificacao;
+    public int getCodigo() {
+        return this.codigo;
     }
 
-    public void setIdentificacao(int identificacao) {
-        this.identificacao = identificacao;
-    }
-
-    public int getAgencia() {
-        return agencia;
-    }
-
-    public void setAgencia(int agencia) {
-        this.agencia = agencia;
+    public void setIdentificacao(int codigo) {
+        this.codigo = codigo;
     }
 
     public double getSaldo() {

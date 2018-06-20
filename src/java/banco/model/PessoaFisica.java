@@ -1,5 +1,7 @@
+package banco.model;
+
 public class PessoaFisica extends Pessoa{
-    String cpf;
+    private String cpf;
     public PessoaFisica(){
  
     }

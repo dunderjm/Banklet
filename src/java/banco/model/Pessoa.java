@@ -1,10 +1,14 @@
+package banco.model;
+
 import java.util.List;
-public abstract class Pessoa {
-    String nome;
-    List<Conta> contas;
+import java.util.ArrayList;
+
+public class Pessoa {
+    private String nome;
+    private List<Conta> contas;
     
     public Pessoa(){
-        
+        contas = new ArrayList<>();
     }
     
     public Pessoa(String nome){

@@ -1,6 +1,7 @@
+package banco.model;
+
 public class PessoaJuridica extends Pessoa{
     String cnpj;
-    Conta conta;
     
     public PessoaJuridica(){
         
@@ -10,5 +11,13 @@ public class PessoaJuridica extends Pessoa{
         super(nome);
         this.cnpj = cnpj;
     }
-    
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+   
 }
