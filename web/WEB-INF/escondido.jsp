@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : 20/06/2018, 20:26:32
+    Document   : escondido
+    Created on : 21/06/2018, 14:46:18
     Author     : krt
 --%>
 
@@ -12,7 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Página Principal</h1>
-        <a href="app?tarefa=Escondido">Página Escondida</a>
+        <h1>${pessoa.nome}</h1>
     </body>
 </html>

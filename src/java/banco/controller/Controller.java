@@ -1,6 +1,5 @@
 package banco.controller;
 
-import banco.model.Pessoa;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,14 +8,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/ola")
+@WebServlet("/app")
 public class Controller extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException{
-        Pessoa ex = new Pessoa("Marcos");
-        request.setAttribute("nome", ex);
-        RequestDispatcher dispatcher= request.getRequestDispatcher("/index.jsp");
-        dispatcher.forward(request,response);
+        String tarefa = request.getParameter("tarefa");
+        if(tarefa == null){
+            throw new IllegalArgumentException("Error");
+        }
+        
+        tarefa = "banco.controller." + tarefa;
+        
+        try{
+            Class <?> tipo = Class.forName(tarefa);
+            Tarefa instancia = (Tarefa) tipo.newInstance();
+            String pagina = instancia.executa(request, response);
+            RequestDispatcher dispatcher = request.getRequestDispatcher(pagina);
+            dispatcher.forward(request, response);
+        }
+        catch(ClassNotFoundException | InstantiationException |IllegalAccessException e){
+            throw new ServletException(e);
+        }
+        
     }
 }
