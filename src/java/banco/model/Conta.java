@@ -1,24 +1,24 @@
 package banco.model;
 
 public abstract class Conta {
-    private Pessoa titular;
+    private Cliente titular;
     private int codigo;
-     private double saldo;
+    private double saldo;
     
     public Conta(){
         
     }
     
-    public Conta(Pessoa titular, int identificacao, int agencia){
+    public Conta(Cliente titular, int identificacao, int agencia){
         this.titular = titular;
         this.codigo = identificacao;
     }
     
-    public Pessoa getTitular() {
+    public Cliente getTitular() {
         return titular;
     }
 
-    public void setTitular(Pessoa titular) {
+    public void setTitular(Cliente titular) {
         this.titular = titular;
         this.titular.addConta(this);
     }
@@ -27,7 +27,7 @@ public abstract class Conta {
         return this.codigo;
     }
 
-    public void setIdentificacao(int codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
@@ -59,4 +59,11 @@ public abstract class Conta {
             conta.depositar(valor);
         }
     }
+
+    @Override
+    public String toString() {
+        return "Conta{" + "titular=" + titular + ", codigo=" + codigo + ", saldo=" + saldo + '}';
+    }
+    
+    
 }
