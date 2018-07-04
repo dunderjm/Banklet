@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="pt-br" dir="ltr">
     <head>
@@ -16,7 +17,7 @@
                     <p>${cliente.getCadastroNacional()}</p>
                 </div>
                 <div class="col s1">
-                    <a href=""class="btn green lighten-1 z-depth-0" style="margin-top:60px">Sair</a>
+                    <a href="logout" class="btn green lighten-1 z-depth-0" style="margin-top:60px">Sair</a>
                 </div>
             </div>
         </div>
@@ -24,46 +25,18 @@
 
             <ul class="collection with-header z-depth-1">
             <li class="collection-header"><h5><i class="small material-icons left">credit_card</i>Contas</h5></li>
+            <c:forEach var="conta" items="${contas}">
             <li class="collection-item">
                 <div class="secondary-content">
                     <a class="btn-small green lighten-1 z-depth-0"><i class="tiny material-icons right">arrow_forward</i>Acessar Conta</a>
                 </div>
                 <div>
-                    <strong>Poupança 1</strong><br>
-                    Código: xxxxxxxxxxx <br>
-                    $ 500,0
+                    <strong>tipo de conta</strong><br>
+                    Código: ${conta.codigo} <br>
+                    R$ ${conta.saldo}
                 </div>
             </li>
-            <li class="collection-item">
-                <div class="secondary-content">
-                    <a class="btn-small green lighten-1 z-depth-0"><i class="tiny material-icons right">arrow_forward</i>Acessar Conta</a>
-                </div>
-                <div>
-                    <strong>Corrent 1</strong><br>
-                    Código: xxxxxxxxxxx <br>
-                    $ 500,0
-                </div>
-            </li>
-            <li class="collection-item">
-                <div class="secondary-content">
-                    <a class="btn-small green lighten-1 z-depth-0"><i class="tiny material-icons right">arrow_forward</i>Acessar Conta</a>
-                </div>
-                <div>
-                    <strong>Poupança 2</strong><br>
-                    Código: xxxxxxxxxxx <br>
-                    $ 500,0
-                </div>
-            </li>
-            <li class="collection-item">
-                <div class="secondary-content">
-                    <a class="btn-small green lighten-1 z-depth-0"><i class="tiny material-icons right">arrow_forward</i>Acessar Conta</a>
-                </div>
-                <div>
-                    <strong>Corrent 2</strong><br>
-                    Código: xxxxxxxxxxx <br>
-                    $ 500,0
-                </div>
-            </li>
+          </c:forEach>
           </ul>
         </div><!-- container -->
     </body>

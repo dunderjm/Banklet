@@ -33,28 +33,48 @@ public class ClienteDAO {
        }
     }
     
-    public Cliente getCliente(String email, String senha){
+    public Cliente getClienteById(int id){
        try{
-        String sql = "SELECT id, nome, tipo, cadastroNacional"
-                   + " FROM clientes WHERE email = ? AND "
-                + "senha = ?";
+        Cliente cliente = null;
+           String sql = "SELECT id, nome, tipo, cadastroNacional"
+                   + " FROM clientes WHERE id = ?";
         PreparedStatement stmt = con.prepareStatement(sql);
-        stmt.setString(1, email);
-        stmt.setString(2, senha);
-        
+        stmt.setInt(1, id);       
         ResultSet rs = stmt.executeQuery();
-        int tipo = rs.getInt("tipo");
-        Cliente cliente = new ClienteFactory().getCliente(tipo);
-        while(rs.next()){
+        if(rs.next()){
+            int tipo = rs.getInt("tipo");
+            cliente = new ClienteFactory().getCliente(tipo);
             cliente.setNome(rs.getString("nome"));
             cliente.setId(rs.getInt("id"));
             cliente.setCadastroNacional(rs.getString("cadastroNacional"));
+            new ContaDAO(con).getContasCliente(cliente);
         }
-        new ContaDAO(con).getContasCliente(cliente);
         return cliente;
        }
        catch(SQLException e){
            throw new RuntimeException(e);
        }
+    }
+    
+    public Cliente buscaEmaileSenha(String email, String senha){
+        String sql = "SELECT id, tipo"
+                   + " FROM clientes WHERE email = ? AND "
+                + "senha = ?";
+        Cliente cliente = null;
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, email);
+            stmt.setString(2, senha);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                cliente = new ClienteFactory().getCliente(rs.getInt("tipo"));
+                cliente.setId(rs.getInt("id"));
+                System.out.println(cliente.getId());
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+            
+        }
+        return cliente;
     }
 }

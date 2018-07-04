@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 public class ContaDAO {
     Connection con;
@@ -21,14 +20,13 @@ public class ContaDAO {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, cliente.getId());
             ResultSet rs = stmt.executeQuery();
-            int tipo = rs.getInt("poupanca");
-            
             while(rs.next()){
+                int tipo = rs.getInt("poupanca");
                 Conta conta = new ContaFactory().getConta(tipo);
                 conta.setSaldo(rs.getFloat("saldo"));
                 conta.setCodigo(rs.getInt("codigo"));
                 conta.setTitular(cliente);
-                cliente.addConta(conta);
+                System.out.println("Loop");
             }
         }catch(SQLException e){
             throw new RuntimeException(e);
