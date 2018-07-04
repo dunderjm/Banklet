@@ -40,12 +40,13 @@
                     <div class="card-content">
                         <span class="card-title">Depositar</span><br>
                         <div class="input-field">
-                            <input placeholder="Valor" id="" name="valor" type="text">
-                            <label for="Valor">Valor</label>
+                            <input placeholder="Valor" id="inputDepositar" name="valor" type="text">
+                            <label for="inputDepositar">Valor</label>
                         </div>
                     </div>
                     <div class="card-action">
-                        <a href="${conta.depositar(1000)}" class="btn">Confirmar</a>
+                        <a class="btn" id="confirmDepositar">Confirmar</a>
+                        <a href="" class="btn blue" id="depositar">Depositar</a>
                     </div>
                 </div>
 
@@ -53,12 +54,13 @@
                     <div class="card-content">
                         <span class="card-title">Sacar</span><br>
                         <div class="input-field">
-                            <input placeholder="Valor" id="" name="valor" type="text">
-                            <label for="Valor">Valor</label>
+                            <input placeholder="Valor" id="inputSacar" name="valor" type="text">
+                            <label for="inputSacar">Valor</label>
                         </div>
                     </div>
                     <div class="card-action">
-                        <button href="#" class="btn">Confirmar</a>
+                        <a class="btn" id="confirmSacar">Confirmar</a>
+                        <a href="" class="btn blue" id="sacar">Sacar</a>
                     </div>
                 </div>
 
@@ -68,23 +70,54 @@
 
                         <div class="row">
                             <div class="input-field col s6">
-                                <input placeholder="codigo" id="" name="valor" type="text">
-                                <label for="Valor">Código</label>
+                                <input placeholder="codigo" id="inputTransferirA" name="valor" type="text">
+                                <label for="inputTransferirA">Código</label>
                             </div>
                             <div class="input-field col s6">
-                                <input placeholder="valor" id="" type="text">
-                                <label for="Valor">Valor</label>
+                                <input placeholder="valor" id="inputTransferirB" type="text">
+                                <label for="inputTransferirB">Valor</label>
                             </div>
                         </div><!-- row -->
 
                     </div><!-- card content -->
                     <div class="card-action">
-                        <a href="#" class="btn">Confirmar</a>
+                        <a class="btn" id="confirmTransferir">Confirmar</a>
+                        <a href="" class="btn blue" id="Transferir">Transferir</a>
                     </div>
                 </div>
 
             </div><!-- col s12 m6 -->
 
         </div><!-- container -->
+
+        <script>
+            inputDepositar = document.querySelector('#inputDepositar');
+            confirmDepositar = document.querySelector('#confirmDepositar');
+            depositar = document.querySelector('#depositar');
+
+            inputSacar = document.querySelector('#inputSacar');
+            confirmSacar = document.querySelector('#confirmSacar');
+            sacar = document.querySelector('#sacar');
+
+            inputTransferirA = document.querySelector('#inputTransferirA');
+            inputTransferirB = document.querySelector('#inputTransferirB');
+            confirmTransferir = document.querySelector('#confirmTransferir');
+            Transferir = document.querySelector('#Transferir');
+
+            confirmDepositar.addEventListener('click', function(){
+                texto = inputDepositar.value;
+                depositar.setAttribute('href', "${conta.depositar(" + texto + ")}");
+            });
+
+            confirmSacar.addEventListener('click', function(){
+                texto = inputSacar.value;
+                sacar.setAttribute('href', "${conta.depositar(" + texto + ")}");
+            });
+
+            /*confirmTransferir.addEventListener('click', function{
+                texto = inputDepositar.value;
+                depositar.setAttribute('href', "${conta.depositar(" + texto + ")}");
+            });*/
+        </script>
     </body>
 </html>
