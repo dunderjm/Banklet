@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 public class ClientePage implements Tarefa{
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse Response) {
@@ -25,10 +26,6 @@ public class ClientePage implements Tarefa{
                 cliente = new ClienteDAO(con).getClienteById(id);
                 contas = cliente.getContas();
             }
-            for(Conta conta: contas){
-                System.out.println(conta);
-            }
-            
             request.setAttribute("cliente", cliente);
             request.setAttribute("contas", contas);
         }catch(SQLException e){

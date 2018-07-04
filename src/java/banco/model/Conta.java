@@ -1,12 +1,15 @@
 package banco.model;
 
+import banco.model.DAO.ContaDAO;
+
 public abstract class Conta {
     private Cliente titular;
     private int codigo;
     private double saldo;
+    private String tipo;
     
-    public Conta(){
-        
+    public Conta(String tipo){
+        this.tipo = tipo;
     }
     
     public Conta(Cliente titular, int identificacao, int agencia){
@@ -38,11 +41,16 @@ public abstract class Conta {
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
-    
+
+    public String getTipo() {
+        return tipo;
+    }
+   
     public void sacar(double valor){
         if (valor >= 0){
             if (this.saldo >= valor) {
                    this.saldo-=valor;
+                   new ContaDAO().update(this.saldo, this.codigo);
             }
         }
     }    
@@ -50,6 +58,7 @@ public abstract class Conta {
     public void depositar(double valor){
         if(valor >= 0){
             this.saldo+=valor;
+            new ContaDAO().update(this.saldo, this.codigo);
         }
     }
     

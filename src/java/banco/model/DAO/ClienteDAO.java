@@ -47,7 +47,7 @@ public class ClienteDAO {
             cliente.setNome(rs.getString("nome"));
             cliente.setId(rs.getInt("id"));
             cliente.setCadastroNacional(rs.getString("cadastroNacional"));
-            new ContaDAO(con).getContasCliente(cliente);
+            new ContaDAO().getContasCliente(cliente);
         }
         return cliente;
        }
@@ -57,7 +57,7 @@ public class ClienteDAO {
     }
     
     public Cliente buscaEmaileSenha(String email, String senha){
-        String sql = "SELECT id, tipo"
+        String sql = "SELECT nome, id, tipo, cadastroNacional"
                    + " FROM clientes WHERE email = ? AND "
                 + "senha = ?";
         Cliente cliente = null;
@@ -69,7 +69,9 @@ public class ClienteDAO {
             if(rs.next()){
                 cliente = new ClienteFactory().getCliente(rs.getInt("tipo"));
                 cliente.setId(rs.getInt("id"));
-                System.out.println(cliente.getId());
+                cliente.setNome(rs.getString("nome"));
+                cliente.setCadastroNacional(rs.getString("cadastroNacional"));
+                new ContaDAO().getContasCliente(cliente);
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex);

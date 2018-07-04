@@ -31,10 +31,8 @@ public class Login extends HttpServlet{
                 response.sendRedirect(request.getContextPath() + "/app?tarefa=ClientePage");
             }
             
-        }catch(SQLException ex){
+        }catch(SQLException | IOException ex){
             throw new RuntimeException(ex);
-        } catch (IOException ex) {
-            
         }
       
     }
