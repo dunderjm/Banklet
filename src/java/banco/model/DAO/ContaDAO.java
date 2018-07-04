@@ -31,6 +31,24 @@ public class ContaDAO {
         }
         return conta;
     }
+    
+    public Conta getContaById(int id_destino){
+        Conta conta = null;
+        String sql = "select * from conta where codigo = ?";
+        try(PreparedStatement stmt = con.prepareStatement(sql)){
+            stmt.setInt(1, id_destino);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                conta = new ContaFactory().getConta(rs.getInt("poupanca"));
+                conta.setCodigo(rs.getInt("codigo"));
+                conta.setSaldo(rs.getDouble("saldo"));
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        return conta;
+    }
+    
     public void getContasCliente(Cliente cliente){
         try{
             String sql = "select * FROM conta WHERE id_cliente = ?";
@@ -43,7 +61,6 @@ public class ContaDAO {
                 conta.setSaldo(rs.getFloat("saldo"));
                 conta.setCodigo(rs.getInt("codigo"));
                 conta.setTitular(cliente);
-                System.out.println("Loop");
             }
         }catch(SQLException e){
             throw new RuntimeException(e);
@@ -56,7 +73,6 @@ public class ContaDAO {
             stmt.setDouble(1, valor);
             stmt.setInt(2, codigo);
             stmt.execute();
-            System.out.println("Executado com sucesso");
         }catch(SQLException e){
             throw new RuntimeException(e);
         }

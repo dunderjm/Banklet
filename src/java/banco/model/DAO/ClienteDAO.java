@@ -71,7 +71,6 @@ public class ClienteDAO {
                 cliente.setId(rs.getInt("id"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setCadastroNacional(rs.getString("cadastroNacional"));
-                new ContaDAO().getContasCliente(cliente);
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex);

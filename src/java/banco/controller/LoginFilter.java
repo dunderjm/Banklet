@@ -29,7 +29,6 @@ public class LoginFilter implements Filter{
         if (session == null || session.getAttribute("user") == null) {
             response.sendRedirect(request.getContextPath() + "/"); 
         } else {
-            System.out.println(session.getAttribute("user"));
             chain.doFilter(req, res); 
         }
     }

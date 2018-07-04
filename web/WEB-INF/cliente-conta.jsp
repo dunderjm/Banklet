@@ -36,11 +36,11 @@
 
             <div class="col s12 m6">
 
-                <form class="card z-depth-1" action="conta/depositar" method="post">
+                <form class="card z-depth-1" action="" method="post">
                     <div class="card-content">
                         <span class="card-title">Depositar</span><br>
                         <div class="input-field">
-                            <input placeholder="Valor" type="text" name="valor">
+                            <input placeholder="Valor" type="text">
                             <label for="valor">Valor</label>
                         </div>
                     </div>
@@ -64,17 +64,17 @@
                     </div>
                 </form>
 
-                <form class="card z-depth-1" action="conta/transferir" method="post">
+                <form class="card z-depth-1">
                     <div class="card-content">
                         <span class="card-title">Transferir</span><br>
 
                         <div class="row">
                             <div class="input-field col s6">
-                                <input placeholder="codigo" type="text" name="id_destino">
+                                <input placeholder="codigo" type="text">
                                 <label for="Valor">Código</label>
                             </div>
                             <div class="input-field col s6">
-                                <input placeholder="valor" type="text" name="valor">
+                                <input placeholder="valor" type="text">
                                 <label for="valor">Valor</label>
                             </div>
                         </div><!-- row -->

@@ -4,7 +4,6 @@ import banco.model.Cliente;
 import banco.model.DAO.ClienteDAO;
 import banco.model.DAO.ConnectionFactory;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.servlet.annotation.WebServlet;
@@ -22,13 +21,13 @@ public class Login extends HttpServlet{
             String email = request.getParameter("email");
             String senha = request.getParameter("senha");
             Cliente cliente = new ClienteDAO(con).buscaEmaileSenha(email, senha);
-            PrintWriter writer = response.getWriter();
             if(cliente == null){
                //Implementar error
             }else{
                 HttpSession session = request.getSession();
                 session.setAttribute("user", cliente);
-                response.sendRedirect(request.getContextPath() + "/app?tarefa=ClientePage");
+                response.sendRedirect(request.getContextPath() + "/app?tarefa="
+                        + "ClientePage");
             }
             
         }catch(SQLException | IOException ex){
