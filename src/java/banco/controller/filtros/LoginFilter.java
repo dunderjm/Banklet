@@ -1,4 +1,4 @@
-package banco.controller;
+package banco.controller.filtros;
 
 import java.io.IOException;
 import javax.servlet.Filter;

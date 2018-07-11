@@ -77,9 +77,8 @@
                                 <input placeholder="valor" type="text" name="valor">
                                 <label for="valor">Valor</label>
                             </div>
-                        </div><!-- row -->
-
-                    </div><!-- card content -->
+                        </div>
+                    </div>
                     <div class="card-action">
                         <input type="hidden" name="id" value="${conta.codigo}">
                         <input type="submit" class="btn" value="Confirmar">

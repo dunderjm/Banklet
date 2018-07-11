@@ -22,7 +22,8 @@ public class Login extends HttpServlet{
             String senha = request.getParameter("senha");
             Cliente cliente = new ClienteDAO(con).buscaEmaileSenha(email, senha);
             if(cliente == null){
-               //Implementar error
+               request.setAttribute("Error", "Email/Senha errados!");
+               
             }else{
                 HttpSession session = request.getSession();
                 session.setAttribute("user", cliente);

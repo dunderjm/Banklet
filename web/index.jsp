@@ -37,6 +37,9 @@
                              </div>
                            </form>
                        </div><!-- row -->
+                       <div class="col s12 center">
+                           <a href="cadastroCliente.jsp">Cadastre-se</a>
+                       </div>
                     </div><!-- col s8 -->
 
                 <div class="col s2 teal"></div>

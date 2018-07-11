@@ -1,7 +1,5 @@
 package banco.model;
 
-import banco.model.DAO.ContaDAO;
-
 public abstract class Conta {
     private Cliente titular;
     private int codigo;
@@ -46,28 +44,11 @@ public abstract class Conta {
         return tipo;
     }
    
-    public void sacar(double valor){
-        if (valor >= 0){
-            if (this.saldo >= valor) {
-                   this.saldo-=valor;
-                   new ContaDAO().update(this.saldo, this.codigo);
-            }
-        }
-    }    
+    public abstract void sacar(double valor);      
     
-    public void depositar(double valor){
-        if(valor >= 0){
-            this.saldo+=valor;
-            new ContaDAO().update(this.saldo, this.codigo);
-        }
-    }
+    public abstract void depositar(double valor);
     
-    public void transferirPara(double valor, Conta conta){
-        if (this.saldo >= valor){
-            this.sacar(valor);
-            conta.depositar(valor);
-        }
-    }
+    public abstract void transferirPara(double valor, Conta conta);
 
     @Override
     public String toString() {

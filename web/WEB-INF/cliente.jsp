@@ -22,7 +22,11 @@
             </div>
         </div>
         <div class="container">
-
+            <div class="row">
+                <div class="col s5"></div>
+                <div class="col s3"><a href="app?tarefa=NovaConta">+Adicionar Nova Conta</a></div>
+                <div class="col s4"></div>
+            </div>
             <ul class="collection with-header z-depth-1">
             <li class="collection-header"><h5><i class="small material-icons left">credit_card</i>Contas</h5></li>
                 <c:choose>

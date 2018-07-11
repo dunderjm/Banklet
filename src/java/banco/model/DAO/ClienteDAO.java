@@ -14,16 +14,15 @@ public class ClienteDAO {
     }
     public void novoCliente(ClienteBean cliente){
         String sql = "INSERT INTO clientes "
-                + "(nome, cadastroNacional, email, senha, admin, tipo)"
-                + "VALUES(?,?,?,?,?,?)";
+                + "(nome, cadastroNacional, email, senha, tipo)"
+                + "VALUES(?,?,?,?,?)";
         try{
             try (PreparedStatement stmt = con.prepareStatement(sql)) {
                 stmt.setString(1,cliente.getNome());
                 stmt.setString(2, cliente.getCadastroNacional());
                 stmt.setString(3, cliente.getEmail());
                 stmt.setString(4, cliente.getSenha());
-                stmt.setInt(5, cliente.getAdmin());
-                stmt.setInt(6, cliente.getTipo());
+                stmt.setInt(5, cliente.getTipo());
                 
                 stmt.execute();
             }

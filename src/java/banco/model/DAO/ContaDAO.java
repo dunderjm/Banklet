@@ -13,6 +13,25 @@ public class ContaDAO {
     public ContaDAO(){
         this.con = new ConnectionFactory().getConnection();
     }
+    
+    public void novaConta(Conta conta){
+         String sql = "INSERT INTO conta "
+                + "(poupanca, id_cliente)"
+                + "VALUES(?,?)";
+        try{
+            try (PreparedStatement stmt = con.prepareStatement(sql)) {
+                int tipo;
+                tipo =("poupanca".equals(conta.getTipo()))? 1: 0;    
+                stmt.setInt(1, tipo);
+                stmt.setInt(2, conta.getTitular().getId());
+                stmt.execute();
+            }
+       }
+       catch(SQLException e){
+           throw new RuntimeException(e);
+       }
+    }
+    
     public Conta getContaById(int id, int id_cliente){
         Conta conta = null;
         String sql = "select * from conta where codigo = ?"
