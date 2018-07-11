@@ -32,6 +32,9 @@
                                  <label>Senha</label>
                                </div>
                                <div class="input-field col s12 center">
+                                  <c:if test="${not empty error}"
+                                      <p class="red-text">${error}</p>
+                                  </c:if>
                                  <button type="submit" class="btn z-depth-0" style="margin-top:10px">Confirmar</button>
                                </div>
                              </div>

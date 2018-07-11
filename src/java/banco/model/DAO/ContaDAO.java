@@ -21,7 +21,7 @@ public class ContaDAO {
         try{
             try (PreparedStatement stmt = con.prepareStatement(sql)) {
                 int tipo;
-                tipo =("poupanca".equals(conta.getTipo()))? 1: 0;    
+                tipo =("Poupança".equals(conta.getTipo()))? 1: 0;    
                 stmt.setInt(1, tipo);
                 stmt.setInt(2, conta.getTitular().getId());
                 stmt.execute();
